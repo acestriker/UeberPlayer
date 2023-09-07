@@ -11,11 +11,11 @@ For more details about these settings: please visit https://github.com/aClueless
 
 const options = {
   /* Widget size! */
-  size: "big",                  // -> big (default) | medium | small | mini
+  size: "small",                  // -> big (default) | medium | small | mini
 
   /* Widget position! */
-  verticalPosition: "top",      // -> top (default) | center | bottom | "<number>" | "-<number>"
-  horizontalPosition: "left",   // -> left (default) | center | right | "<number>" | "-<number>"
+  verticalPosition: "598",      // -> top (default) | center | bottom | "<number>" | "-<number>"
+  horizontalPosition: "16",   // -> left (default) | center | right | "<number>" | "-<number>"
 
   /* Widget visibility! */
   alwaysShow: 0,                // -> 0 (default) | 1 | 2
@@ -85,9 +85,8 @@ const wrapperPos = ({ horizontal, vertical }) => {
 
 const Wrapper = styled("div")`
   position: absolute;
-  border-radius: 6px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 16px 32px 9px #0005;
   opacity: ${props => props.show ? 1 : 0};
   background: ${props => (props.bg !== undefined) ? props.bg : "#0004"};
   transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -159,8 +158,8 @@ const MediumPlayer = styled(BigPlayer)`
 const SmallPlayer = styled("div")`
   position: relative;
   display: flex;
-  height: 80px;
-  width: 340px;
+  height: 82px;
+  width: 344px;
 `
 
 const MiniPlayer = styled("div")`
@@ -199,8 +198,8 @@ const ArtworkWrapper = styled("div")`
   }
 
   &.small {
-    width: 80px;
-    height: 80px;
+    width: 82px;
+    height: 82px;
   }
 
   &.mini {
@@ -247,7 +246,7 @@ const Information = styled("div")`
   padding: .5em .75em;
   line-height: 1.3;
   border-radius: 0 0 6px 6px;
-  backdrop-filter: ${options.adaptiveColors ? "blur(8px)" : "blur(8px) brightness(90%) contrast(80%) saturate(140%)"};
+  backdrop-filter: ${options.adaptiveColors ? "blur(0px)" : "blur(0px) brightness(90%) contrast(80%) saturate(140%)"};
 
   > p {
     text-align: center;
@@ -484,7 +483,7 @@ export const updateState = ({ type, output, error }, previousState) => {
 
 // Check for update
 const checkForUpdate = async (dispatch) => {
-  let resp = await fetch('https://raw.githubusercontent.com/aCluelessDanny/UeberPlayer/master/widget.json');
+  let resp = await fetch('https://raw.githubusercontent.com/acestriker/UeberPlayer/master/widget.json');
   if (!resp.ok) { throw Error("Unable to check for update!") }
 
   let data = await resp.json();
